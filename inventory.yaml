@@ -5,4 +5,4 @@ all:
         172.31.34.88:
       vars:
         ansible_user: ubuntu
-        ansible_ssh_private_key_file=~/.ssh/ansible_id_rsa
+        ansible_ssh_private_key_file=~/ansible/may23.pem
