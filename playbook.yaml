@@ -1,9 +1,27 @@
+- hosts: all
+  tasks:
+    - name: install wget 
+    apt:
+      name: wget
+      state: latest
+      update_cache: True
+      
 - hosts: demo
   tasks:
-  - name: "Ping"
+  - name: Ping
     ping:
+  - name: install unzip
+    apt:
+      name: unzip
+      state: latest
+      update_cache: True
 
 - hosts: nginx
   tasks:
   - name: "Ping"
     ping:
+  - name: install lastest nginx version
+    apt:
+      name: nginx
+      state: latest
+      update_cache: True
