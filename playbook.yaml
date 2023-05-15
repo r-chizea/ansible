@@ -1,12 +1,16 @@
 - hosts: all
+  name: install wget on all hosts
+  become: True
   tasks:
     - name: install wget 
     apt:
       name: wget
       state: latest
       update_cache: True
-      
+
 - hosts: demo
+  name: install unzip on demo servers
+  become: True 
   tasks:
   - name: Ping
     ping:
@@ -17,6 +21,8 @@
       update_cache: True
 
 - hosts: nginx
+  name: install nginx on nginx servers
+  become: True
   tasks:
   - name: "Ping"
     ping:
