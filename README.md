@@ -1,0 +1,1 @@
+ansible directory for training
