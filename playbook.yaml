@@ -9,7 +9,7 @@
         update_cache: True
 
 - hosts: demo
-  name: install unzip on demo servers
+  name: setup the demo servers
   become: True 
   tasks:
   - name: Ping
@@ -19,9 +19,14 @@
       name: unzip
       state: latest
       update_cache: True
+  - name: install lastest nginx version
+    apt:
+      name: nginx
+      state: latest
+      update_cache: True
 
 - hosts: nginx
-  name: install nginx on nginx servers
+  name: set up the nginx servers
   become: True
   tasks:
   - name: "Ping"
@@ -31,3 +36,12 @@
       name: nginx
       state: latest
       update_cache: True
+  - name: restart nginx service
+    systemd:
+      name: nginx
+      state: restarted
+  - name: changing html page
+    copy:
+      src: purple.html
+      dest: /var/www/html/index.nginx-debian.html
+
