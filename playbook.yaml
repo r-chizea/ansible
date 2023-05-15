@@ -3,10 +3,10 @@
   become: True
   tasks:
     - name: install wget 
-    apt:
-      name: wget
-      state: latest
-      update_cache: True
+      apt:
+        name: wget
+        state: latest
+        update_cache: True
 
 - hosts: demo
   name: install unzip on demo servers
