@@ -2,3 +2,8 @@
   tasks:
   - name: "Ping"
     ping:
+
+- hosts: nginx
+  tasks:
+  - name: "Ping"
+    ping:

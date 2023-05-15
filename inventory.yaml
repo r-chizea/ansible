@@ -1,8 +1,11 @@
 all:
+  vars:
+    ansible_user: ubuntu
+    ansible_ssh_private_key_file: ~/ansible/may23.pem
   children:
     demo:
       hosts:
         172.31.34.88:
-      vars:
-        ansible_user: ubuntu
-        ansible_ssh_private_key_file: ~/ansible/may23.pem
+    nginx:
+      hosts:
+        172.31.41.216:
