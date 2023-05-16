@@ -1,0 +1,13 @@
+events {}
+http{
+    upstream backend {
+        server {{ serverip1 }} weight=5;
+        server {{ serverip2 }};
+    }
+    server {
+        listen 80;
+        location / {
+            proxy_pass http://backend;
+        }
+    }
+}
