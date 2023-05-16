@@ -1,0 +1,71 @@
+- hosts: all
+  name: setting up instances
+  become: True
+  vars:
+    pkg: unzip
+  tasks:
+  - name: use debug to print my name
+    debug:
+      msg: "I am {{ my_name }}"
+  - name: cloning the git repo
+    git:
+      repo: https://github.com/r-chizea/ansible.git
+      dest: "~/repo"
+  - name: install a package (unzip as default)
+    apt:
+      name: "{{pkg}}"
+      state: latest
+      update_cache: True
+  - name: install nginx
+    apt:
+      name: nginx
+      state: latest
+      update_cache: True
+
+- hosts: loadbalancer
+  name: install new config file
+  become: True
+  vars:
+    serverip1: "172.31.43.105"
+    serverip2: "172.31.32.52"
+  tasks:
+  - name: copy the loadbalancer config file
+    template:
+      dest: /etc/nginx/nginx.conf
+      src: loadbalancer.conf.j2
+    notify:
+    - restart-nginx
+  handlers:
+  - name: restart-nginx
+    systemd:
+      name: nginx
+      state: restarted
+
+- hosts: 172.31.43.105
+  name: install purple webpage
+  become: True
+  tasks:
+  - name: changing html page
+    copy:
+      src: purple.html
+      dest: /var/www/html/index.nginx-debian.html
+
+- hosts: 172.31.32.52
+  name: install orange webpage
+  become: True
+  tasks:
+  - name: changing html page
+    copy:
+      src: orange.html
+      dest: /var/www/html/index.nginx-debian.html
+
+- hosts: all
+  name: creating a new file
+  become: True
+  vars:
+    appended_text: "{{ text }}"
+  tasks:
+  - name: create file and append text
+    copy:
+      dest: ~/repo/newtext.file
+      content: "{{ appended_text }}"
