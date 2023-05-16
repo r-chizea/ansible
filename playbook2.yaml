@@ -62,7 +62,7 @@
   name: creating a new file
   become: True
   vars:
-    appended_tect = "{{ text }}"
+    appended_text: "{{ text }}"
   tasks:
   - name: create file and append text
     copy:
