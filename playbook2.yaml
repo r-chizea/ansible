@@ -66,5 +66,5 @@
   tasks:
   - name: create file and append text
     copy:
-      dest: ~/ansible
+      dest: ~/ansible/newtext.file
       content: "{{ appended_text }}"
