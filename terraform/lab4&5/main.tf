@@ -16,6 +16,7 @@ resource "aws_instance" "lab4" {
   key_name = var.my_key
   subnet_id = aws_subnet.lab4_subnet_1.id
   associate_public_ip_address = true
+  security_groups = [ aws_security_group.allow_ssh ]
   tags = {
     key = "project"
     value = "lab_4"
