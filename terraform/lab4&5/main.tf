@@ -85,11 +85,6 @@ resource "aws_route_table" "lab4_rt" {
     gateway_id = aws_internet_gateway.lab4_gw.id
   }
 
-  route {
-    ipv6_cidr_block        = "::/0"
-    egress_only_gateway_id = aws_egress_only_internet_gateway.example.id
-  }
-
   tags = {
     key = "project"
     value = "lab_4"
