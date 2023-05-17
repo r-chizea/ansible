@@ -30,7 +30,7 @@ resource "aws_vpc" "lab4_vpc" {
 }
 
 resource "aws_subnet" "lab4_subnet_1" {
-  vpc_id = aws_vpc.lab4_vpc
+  vpc_id = aws_vpc.lab4_vpc.id
   cidr_block = "10.0.1.0/24"
   tags = {
       key = "project"
@@ -39,7 +39,7 @@ resource "aws_subnet" "lab4_subnet_1" {
 }
 
 resource "aws_subnet" "lab4_subnet_2" {
-  vpc_id = aws_vpc.lab4_vpc
+  vpc_id = aws_vpc.lab4_vpc.id
   cidr_block = "10.0.2.0/24"
   tags = {
     key = "project"
@@ -50,7 +50,7 @@ resource "aws_subnet" "lab4_subnet_2" {
 resource "aws_security_group" "allow_ssh" {
   name = "alllow_ssh"
   description = "allow ssh connection to instances"
-  vpc_id = aws_vpc.lab4_vpc
+  vpc_id = aws_vpc.lab4_vpc.id
 
   ingress {
     description = "Inbound SSH connections"
@@ -76,7 +76,7 @@ resource "aws_security_group" "allow_ssh" {
 }
 
 resource "aws_default_route_table" "default" {
-  default_route_table_id = aws_vpc.lab4_vpc
+  default_route_table_id = aws_vpc.lab4_vpc.default_route_table_id
   tags ={
     key = "project"
     value = "lab_4"
