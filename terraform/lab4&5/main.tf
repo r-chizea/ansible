@@ -104,9 +104,9 @@ resource "aws_internet_gateway" "lab4_gw" {
 }
 
 variable "image_id" {
-  value = string
+  type= string
 }
 
 variable "my_key" {
-  value = string
+  type = string
 }
