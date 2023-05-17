@@ -86,19 +86,13 @@ resource "aws_default_route_table" "default" {
 resource "aws_route_table_association" "association1" {
   subnet_id = aws_subnet.lab4_subnet_1
   route_table_id = aws_default_route_table.default.id
-  tags = {
-    key = "project"
-    value = "lab_4"
-  }
+
 }
 
 resource "aws_route_table_association" "association2" {
   subnet_id = aws_subnet.lab4_subnet_2
   route_table_id = aws_default_route_table.default.id
-  tags = {
-    key = "project"
-    value = "lab_4"
-  }
+
 }
 
 resource "aws_internet_gateway" "lab4_gw" {
@@ -109,6 +103,3 @@ resource "aws_internet_gateway" "lab4_gw" {
   }
 }
 
-variable "image_id" {
-  type = string
-}
