@@ -81,7 +81,7 @@ resource "aws_route_table" "lab4_rt" {
   vpc_id = aws_vpc.lab4_vpc.id
 
   route {
-    cidr_block = "10.0.10.0/16"
+    cidr_block = "10.0.0.0/16"
     gateway_id = aws_internet_gateway.lab4_gw.id
   }
 
