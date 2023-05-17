@@ -33,6 +33,6 @@ output "subnet" {
   value = aws_instance.server.subnet_id
 }
 
-output "bucket stuff" {
+output "bucket_arn" {
   value = aws_s3_bucket.test.arn
 }
