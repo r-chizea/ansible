@@ -14,7 +14,7 @@ resource "aws_instance" "lab4" {
   ami = var.image_id
   instance_type = "t2.micro"
   key_name = var.my_key
-  vpc_id = aws_vpc.lab4_vpc
+  subnet_id = aws_subnet.lab4_subnet_1.id
   tags = {
     key = "project"
     value = "lab_4"
