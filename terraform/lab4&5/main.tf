@@ -110,3 +110,7 @@ variable "image_id" {
 variable "my_key" {
   type = string
 }
+
+output "PublicIP" {
+  value = aws_instance.lab4.public_ip
+}
