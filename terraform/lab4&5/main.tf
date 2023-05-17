@@ -84,19 +84,19 @@ resource "aws_default_route_table" "default" {
 }
 
 resource "aws_route_table_association" "association1" {
-  subnet_id = aws_subnet.lab4_subnet_1
+  subnet_id = aws_subnet.lab4_subnet_1.id
   route_table_id = aws_default_route_table.default.id
 
 }
 
 resource "aws_route_table_association" "association2" {
-  subnet_id = aws_subnet.lab4_subnet_2
+  subnet_id = aws_subnet.lab4_subnet_2.id
   route_table_id = aws_default_route_table.default.id
 
 }
 
 resource "aws_internet_gateway" "lab4_gw" {
-  vpc_id = aws_vpc.lab4_vpc
+  vpc_id = aws_vpc.lab4_vpc.id
   tags = {
     key = "project"
     value = "lab_4"
