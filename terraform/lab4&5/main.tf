@@ -13,7 +13,7 @@ provider "aws" {
 resource "aws_instance" "lab4" {
   ami = var.image_id
   instance_type = "t2.micro"
-  key_name = may23
+  key_name = var.my_key
   vpc_id = aws_vpc.lab4_vpc
   tags = {
     key = "project"
@@ -105,4 +105,8 @@ resource "aws_internet_gateway" "lab4_gw" {
 
 variable "image_id" {
   type= string
+}
+
+variable "my_key" {
+  type = string
 }
